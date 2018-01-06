@@ -23,6 +23,21 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	$('.send-disconnect').on('click',function(){
+		$('.modalDisconnect').modal('show');
+		setTimeout(function(){
+			$.get('ajax/sendDisconnect.php?isDisconnect=true', function(response){
+				if(response == 1)
+					window.location = "index.php";
+				else{
+					$('.modalCoError').modal('show');
+					$('.logErrorDesc').html(response);
+				}
+			});
+		}, 2000);
+		return false;
+	});
+	
 });
 
 $(window).scroll(function() {

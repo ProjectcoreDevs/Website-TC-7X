@@ -1,4 +1,8 @@
-<?php require_once 'core/config.php'; ?>
+<?php session_start();
+include_once 'core/functions.php';
+$auth = new Auth;
+$system->db = $db;
+?>
 <!DOCTYPE html>
 <html lang="en" class="full-height">
 
@@ -52,6 +56,20 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade modalCoError" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<center>
+						<h4><?=$site['connectError']?></h4>
+						<img src="assets/images/regError.png" width="80px"/>
+						<h5 class="coErrorDesc"></h5>
+						<button class="btn btn-danger" data-dismiss="modal"><?=$site['connectErrorBtn']?></button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
     <header>
 		<nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
 			<nav class="navbar navbar-top hidden-xs">
@@ -80,7 +98,13 @@
 							<li><a href="#">Download</a></li>
 							<li><a href="#">Forum</a></li>
 							<li><a href="#">Bugtracker</a></li>
-							<li><a href="#">Login</a></li>
+							<?php if($auth->isLogged()){
+								echo '<li><a href="#">Account</a></li>';
+							}
+							else{
+								echo '<li><a href="#">Login</a></li>';
+							} ?>
+							
 							<li><a href="#">Help</a></li>
 						</ul>
 						<div class="dropdown visible-xs pull-right">
@@ -113,51 +137,68 @@
 			<a href="#" class="pull-right">Read More</a>
 		</div>
 		<div class="col-md-6 index-box">
-			<h1>Join us !</h1>
-			<form class="" method="" action="#">
-				<div class="form-group">
-					<label for="username" class="cols-sm-2 control-label">Username</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-							<input type="text" class="form-control regUsername"  placeholder="Enter your Username"/>
+		<?php if($auth->isLogged()){
+			echo '
+				<div class="col-md-12">
+					<h4>'.$site['loggedMessageTitle'].'</h4>
+				</div>
+				<div class="col-md-12">
+					<h5><a href="#"><span class="glyphicon glyphicon-home"></span>'.$site['readAccount'].'</a></h5>
+					<h5><a href="#"><span class="glyphicon glyphicon-user"></span>'.$site['charsManagement'].'</a></h5>
+					<h5><a href="#"><span class="glyphicon glyphicon-fire"></span>'.$site['goToStore'].'</a></h5>
+					<h5><a href="#"><span class="glyphicon glyphicon-download"></span>'.$site['downloadLauncher'].'</a></h5>
+				</div>
+				<div class="nk-gap"></div>
+				<div class="col-md-12">
+					<button class="btn btn-register send-disconnect">'.$site['loggedDisconnectBtn'].'</button>
+				</div>';
+		} else{
+			echo '<h1>Join us !</h1>
+				<form class="" method="" action="#">
+					<div class="form-group">
+						<label for="username" class="cols-sm-2 control-label">Username</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control regUsername"  placeholder="Enter your Username"/>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="email" class="cols-sm-2 control-label">Email</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-							<input type="text" class="form-control regEmail"  placeholder="Enter your Email"/>
+					<div class="form-group">
+						<label for="email" class="cols-sm-2 control-label">Email</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+								<input type="text" class="form-control regEmail"  placeholder="Enter your Email"/>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="password" class="cols-sm-2 control-label">Password</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-							<input type="password" class="form-control regPassword"  placeholder="Enter your Password"/>
+					<div class="form-group">
+						<label for="password" class="cols-sm-2 control-label">Password</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+								<input type="password" class="form-control regPassword"  placeholder="Enter your Password"/>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-							<input type="password" class="form-control regRepassword"  placeholder="Confirm your Password"/>
+					<div class="form-group">
+						<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+								<input type="password" class="form-control regRepassword"  placeholder="Confirm your Password"/>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="form-group ">
-					<button class="btn btn-register btn-lg btn-block sendRegister">Register</button>
-				</div>
-			</form>
-		</div>
+					<div class="form-group ">
+						<button class="btn btn-register btn-lg btn-block sendRegister">Register</button>
+					</div>
+				</form>';
+				} ?>
+			</div>
 		</div>
 	</div>
 	</br>
