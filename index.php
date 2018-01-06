@@ -1,4 +1,4 @@
-
+<?php require_once 'core/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en" class="full-height">
 
@@ -19,6 +19,25 @@
 			<source type="video/webm" src="assets/images/header-illidan.webm">
 		</video>
 	</div>
+	<div class="modal fade loadingShow" >
+		<div class="cssload-bell">
+			<div class="cssload-circle">
+				<div class="cssload-inner"></div>
+			</div>
+			<div class="cssload-circle">
+				<div class="cssload-inner"></div>
+			</div>
+			<div class="cssload-circle">
+				<div class="cssload-inner"></div>
+			</div>
+			<div class="cssload-circle">
+				<div class="cssload-inner"></div>
+			</div>
+			<div class="cssload-circle">
+				<div class="cssload-inner"></div>
+			</div>
+		</div>
+    </div>
     <header>
 		<nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
 			<nav class="navbar navbar-top hidden-xs">
@@ -81,14 +100,14 @@
 			<a href="#" class="pull-right">Read More</a>
 		</div>
 		<div class="col-md-6 index-box">
-			<h2>Join us !</h2>
-			<form class="" method="post" action="#">
+			<h1>Join us !</h1>
+			<form class="" method="" action="#">
 				<div class="form-group">
 					<label for="username" class="cols-sm-2 control-label">Username</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-							<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+							<input type="text" class="form-control regUsername"  placeholder="Enter your Username"/>
 						</div>
 					</div>
 				</div>
@@ -97,7 +116,7 @@
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-							<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+							<input type="text" class="form-control regEmail"  placeholder="Enter your Email"/>
 						</div>
 					</div>
 				</div>
@@ -106,7 +125,7 @@
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-							<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+							<input type="password" class="form-control regPassword"  placeholder="Enter your Password"/>
 						</div>
 					</div>
 				</div>
@@ -116,15 +135,14 @@
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-							<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+							<input type="password" class="form-control regRepassword"  placeholder="Confirm your Password"/>
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group ">
-					<button class="btn btn-primary btn-lg btn-block">Register</button>
+					<button class="btn btn-register btn-lg btn-block sendRegister">Register</button>
 				</div>
-				
 			</form>
 		</div>
 		</div>
