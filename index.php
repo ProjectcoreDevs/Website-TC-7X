@@ -1,163 +1,162 @@
-<?php define('DarkCoreCMS', TRUE); include 'header.php'; if (isset($_SESSION['usr'])) { $user_prw = $_SESSION['usr'];}
-$user_account = new account;
-?>
-	<title><?php echo $websiteTitle; ?></title>
-	<script type="text/javascript"
-		src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en" class="full-height">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Website Title</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
-	<div id='header'>
-
+	<div id="video-fond">
+		<video autoplay loop>
+			<source type="video/webm" src="assets/images/header-illidan.webm">
+		</video>
 	</div>
-	<?php include 'menu.php';
-        if (isset($_GET["errlogin"])){
-    ?>
-    <div id="notify">There was an error when logging in recheck your account and password corectly acc and pass are case sensitive</div>
-    <?php } ?>
-	<div id='navigate-block'>
-		<a class='navigate-item' href='index'>Home</a>
-	</div>
-	<div id='content'>
-		<div id='index-content-left'>
-			<div id='main-tools'>
-				<div class='main-tools-box'>
-                    <h1 class="main-tools-head-text"><?php echo $welcomeTitle; ?></h1>
-                    <div class="main-tools-description"><?php echo $welcomeDescription; ?></div>
-                    <ul>
-                        <li class="main-tools-li"><a href="register">REGISTER</a></li>
-                        <li class="main-tools-li"><a href="login">LOGIN</a></li>
-                        <li class="main-tools-li"><a href="guides">GUIDES & DOWNLOADS</a></li>
-                    </ul>
+    <header>
+		<nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
+			<nav class="navbar navbar-top hidden-xs">
+				<div class="container">
+					<ul class="nav navbar-nav pull-left">
+						<li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+						<li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+					</ul>
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="#" class="text-white">Language</a></li> 
+					</ul>
 				</div>
-			</div>
-			<div id='lastnews'>
-				<div class='lastnews-head-text'>LATEST NEWS & ANNOUNCEMENTS</div>
-                <div class="newsdivider"></div>
-				<?php $data_news = new news;
-				$getLastNews = $data_news->get_last_news();
-				for ($i=1;$i<=count($getLastNews);$i++) {?>
-					<div class='newsthumb'>
-						<div class='newsthumbicon'><a href="news?id=<?php echo $getLastNews[$i]['id']; ?>"><img src='images/avatars/darksoke.png' alt='<?php echo $getLastNews[$i]['title'];?>' width="100%" height="100%"/></a></div>
-						<div class='newsthumbbody'>
-							<div class='newsthumbtitle'><?php echo $getLastNews[$i]['title'];?></div>
-							<div class='newsthumbresult'>&emsp;&emsp;<?php echo strip_tags(substr($getLastNews[$i]['body'], 0, 300)); ?>...</div>
-							<div class='newsthumbbutton'>
-								<div class='thb-left'>
-									<label style='color:#72BF8B;'>By</label> <label style='font-size:14px !important;color:#9a0000;'><?php echo $getLastNews[$i]['autor'];?></label>
-									<label style='color:#72BF8B;'> in <?php echo substr($getLastNews[$i]['date'],0,10); ?> </label>
-								</div>
-								<div class="news-thb-right"><a href='news' class='lastnews-right-text'>Read all news...</a></div>
-
-							</div>
+				<div class="dividline light-grey"></div>
+			</nav>
+			<nav class="navbar navbar-down">
+				<div class="container">
+					<div class="flex-container">  
+						<div class="navbar-header flex-item">
+							<div class="navbar-brand" href="index.php">Website Title</div>
+						</div>
+						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Download</a></li>
+							<li><a href="#">Forum</a></li>
+							<li><a href="#">Bugtracker</a></li>
+							<li><a href="#">Login</a></li>
+							<li><a href="#">Help</a></li>
+						</ul>
+						<div class="dropdown visible-xs pull-right">
+							<button class="btn btn-default dropdown-toggle " type="button" id="dropdownmenu" data-toggle="dropdown">
+								<span class="glyphicon glyphicon-align-justify"></span> 
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Home</a></li>
+								<li><a href="#">Forum</a></li> 
+								<li><a href="#">Bugtracker</a></li> 
+								<li><a href="#">Login</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Help</a></li>
+							</ul>
+						</div>
+					</div>  
+				</div>
+			</nav>
+			<div class="dividline light-grey"></div>
+		</nav>
+	</header>
+	</br>
+	</br>
+	<div class="container">
+			<div class="row vertical-gap">
+		<div class="col-md-6 index-box">
+			<h2>Latest News</h2>
+			<img src="assets/images/wow-legion.jpg" class="img-responsive"/>
+			<h3>News Title</h3>
+			<h5>Test Test Test Test</h5>
+			<a href="#" class="pull-right">Read More</a>
+		</div>
+		<div class="col-md-6 index-box">
+			<h2>Join us !</h2>
+			<form class="" method="post" action="#">
+				<div class="form-group">
+					<label for="username" class="cols-sm-2 control-label">Username</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
 						</div>
 					</div>
-				<?php } ?>
-			</div>
-			<div id='mediabox'>
-				<div class='mediabox-head-text'>MEDIA</div>
-                <div class="newsdivider"></div>
-                <iframe id="abc_frame" width="650" height="350" src="https://www.youtube.com/embed/iyQ0dXWmW6o" frameborder="0" allowfullscreen></iframe>
-                <div class="media-line">
-                    <div class="media-thumb" onclick="getvideo('iyQ0dXWmW6o')">
-                        <img src="http://img.youtube.com/vi/iyQ0dXWmW6o/2.jpg" width="50" height="50" />
-                    </div>
-                    <div class="media-thumb" onclick="getvideo('vRYvhY8YzU4')" style="margin-left:10px;">
-                        <img src="http://img.youtube.com/vi/vRYvhY8YzU4/2.jpg" width="50" height="50" />
-                    </div>
-                </div>
-			</div>
-            <div id='secondary-box'>
-                <div class='mediabox-head-text'>SOCIAL MEDIA</div>
-                <div class="newsdivider"></div>
-                <div class="fb-page" data-href="https://www.facebook.com/GamingZeta" data-width="288" data-height="300" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
-                    <div class="fb-xfbml-parse-ignore">
-                        <blockquote cite="https://www.facebook.com/GamingZeta">
-                            <a href="https://www.facebook.com/GamingZeta">GamingZeta</a>
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="milestone-line">
-                    Next Milestone: <label style="color:#5BD0B0;">750</label> Likes Reward: <label style="color:#5BD0B0;">3</label> DP <label style="color:#5BD0B0;">300</label> VP<br>
-                    Last Milestone: <label style="color:#5BD0B0;">700</label> Likes Reward: <label style="color:#5BD0B0;">500</label> VP<br>
-                </div>
-            </div>
-		</div>
-        <div id='index-content-right'>
-            <div class='acclogin-info'>
-                <div class='acclogin-info-head-text'>ACCOUNT <?php if (isset($user_prw)){echo "- <a href='user' class='accnamelink'>".strtoupper($user_prw)."</a>";}; ?></div>
-                <div class="newsdivider"></div>
-                <div class='loggedas'>
-                <?php if (!isset($_SESSION['usr'])) {?>
-					<form action='core/do_login.php' method='post'  autocomplete='off' enctype='multipart/form-data'>
-                        <input style="display:none">
-                        <input type="password" style="display:none">
-                        <input value='' name='login_username' class='usrinput' placeholder="Username" autocomplete="off" type='text' />
-						<input value='' name='login_password' class='usrinput' style="margin-top:5px;" placeholder="Password" autocomplete="off" type='password' />
-						<input value='Login' name='login' id='submit' type='submit'>
-                        <a href='register' /><div class='submit-submenu'>Register</div></a>
-                    </form>
+				</div>
+				<div class="form-group">
+					<label for="email" class="cols-sm-2 control-label">Email</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="cols-sm-2 control-label">Password</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+						</div>
+					</div>
+				</div>
 
-				<?php } else {
-					$account= get_acc_info_by_user();
-					for ($i=1;$i<=count($account);$i++) {?>
-					<div id='inforow' class="skinnytip" data-text="<div class='miniinfo'>This field represent your registrar email</div>">
-						<div class='inforowdesc'>Email:</div>
-						<div class='inforowresult'><?php echo $account[$i]['email']; ?></div>
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+						</div>
 					</div>
-					<div id='inforow' class="skinnytip" data-text="<div class='miniinfo'>This field represent the last time when you logged ingame</div>">
-						<div class='inforowdesc'>Session:</div>
-						<div class='inforowresult'><?php echo $account[$i]['last_login']; ?></div>
-					</div>
-					<div id='inforow' class="skinnytip" data-text="<div class='miniinfo'>This field represent your last login IP</div>">
-						<div class='inforowdesc'>Last IP:</div>
-						<div class='inforowresult'><?php echo $account[$i]['last_ip']; ?></div>
-					</div>
-					<div id='inforow' class="skinnytip" data-text="<div class='miniinfo'>This field represent your rank</div>">
-						<div class='inforowdesc'>Rank:</div>
-						<div class='inforowresult'><?php echo $account[$i]['rank']; ?></div>
-					</div>
-					<div id='inforow' class="skinnytip" data-text="<div class='miniinfo'>This represent your total Vote Points</div>">
-						<div class='inforowdesc'>Vote Points:</div>
-						<div class='inforowresult'><?php echo $account[$i]['vp']; ?></div>
-					</div>
-					<div id='inforow' class="skinnytip" data-text="<div class='miniinfo'>This represent your total Donation Points</div>">
-						<div class='inforowdesc'>Donation Points:</div>
-						<div class='inforowresult'><?php echo $account[$i]['dp']; ?></div>
-					</div>
-				<?php } } ?>
-                    </div>
-            </div>
-            <div class="connectionguide"></div>
-            <div class="dpatches"></div>
-            <div class="rmlist">set portal <?php echo $realmPortal; ?></div>
-            <?php $realminfo = new realm;
-            $realminfo->construct(1);?>
-            <div class="realmstat">
-                <a href="realm?id=<?php echo $realminfo->realm_id;?>">
-                    <img class="gversion" src='images/r-wod.png' height='19' alt='username'><div class="realmname"><a href="realm?realm=1/<?php echo urlencode($realminfo->rm_name); ?>" class="realmnamelink"><?php echo $realminfo->rm_name; ?></a></div>
-                    <div class="realminfo">Online: <?php echo $realminfo->total_online;?>/250
-                    Alliance: <?php echo $realminfo->alliance;?> Horde: <?php echo $realminfo->horde;?></div>
-                </a>
-            </div>
-        </div>
+				</div>
+
+				<div class="form-group ">
+					<button class="btn btn-primary btn-lg btn-block">Register</button>
+				</div>
+				
+			</form>
+		</div>
+		</div>
 	</div>
-    <script>
-        function getvideo($code){
-            $(document).ready(function() {
-                $('#abc_frame').attr('src','https://www.youtube.com/embed/'+$code);
-            })
-        }
-    </script>
-<script type="text/javascript">SkinnyTip.init();</script>
+	</br>
+	</br>
+	</br>
+	<div class="col-md-12">
+		<div class="footer-bottom">
+			<div class="container">
+				<span> © 2018 Copyright Website Title.All Rights Reserved</span>
+				<span>|</span>
+				<a href="#">Privacy Policy</a>
+				<div class="pull-right">
+				<a href="#">Home</a>
+				<span>|</span>
+				<a href="#">Download</a>
+				<span>|</span>
+				<a href="#">Forum</a>				
+				<span>|</span>
+				<a href="#">Bugtracker</a>
+				<span>|</span>
+				<a href="#">Login</a>
+				<span>|</span>
+				<a href="#">Help</a>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!--Main Layout-->
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 </body>
-<?php include 'global-footer.php' ?>
 </html>
