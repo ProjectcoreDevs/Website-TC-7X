@@ -8,11 +8,18 @@ $(document).ready(function() {
 			regPassword = $('.regPassword').val();
 			regRepassword = $('.regRepassword').val();
 			alert(regUsername+' - '+regEmail+' - '+regPassword+' - '+regRepassword);
-			$.get('includes/ajax/sendRegister.php?regUsername='+regUsername+'&regEmail'+regEmail+'&regPassword'+regPassword+'&regRepassword'+regRepassword, function(response){
+			$.get('ajax/sendRegister.php?regUsername='+regUsername+'&regEmail='+regEmail+'&regPassword='+regPassword+'&regRepassword='+regRepassword, function(response){
 				$('.loadingShow').modal('hide');
-				alert(response);
+				if(response == 1){
+					location.reload();
+				}
+				else{
+					$('.regErrorShow').modal('show');
+					$('.regErrorInfo').html(response);
+				}
 			});
 		}, 2000);
+		
 		return false;
 	});
 	

@@ -1,11 +1,11 @@
 <?php session_start();
-include_once("../../core/functions.php");
+include_once("../core/functions.php");
 $system = new System;
 $system->db = $db;
 
-if(isset($_GET['regUsername']) && isset($_GET['regEmail']) && isset($_GET['regPassword']) && isset($_GET['regRePassword'])){
-	if(!empty($_GET['regUsername']) || !empty($_GET['regEmail']) || !empty($_GET['regPassword']) || !empty($_GET['regRePassword'])){
-		if($_GET['regPassword'] == $_GET['regRePassword']){
+if(isset($_GET['regUsername']) && isset($_GET['regEmail']) && isset($_GET['regPassword']) && isset($_GET['regRepassword'])){
+	if(!empty($_GET['regUsername']) || !empty($_GET['regEmail']) || !empty($_GET['regPassword']) || !empty($_GET['regRepassword'])){
+		if($_GET['regPassword'] == $_GET['regRepassword']){
 			$getEmail = $db->query("SELECT * FROM ".$auth_database.".account WHERE email='".$_GET['regEmail']."'");
 			if($getEmail->num_rows == 0){
 				$getUsername = $db->query("SELECT * FROM ".$auth_database.".account WHERE username='".$_GET['regUsername']."'");

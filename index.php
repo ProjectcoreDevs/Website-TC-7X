@@ -38,6 +38,20 @@
 			</div>
 		</div>
     </div>
+	<div class="modal fade regErrorShow" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<center>
+						<h4><?=$site['registerError']?></h4>
+						<img src="assets/images/regError.png" width="80px"/>
+						<h5 class="regErrorInfo"></h5>
+						<button class="btn btn-danger" data-dismiss="modal"><?=$site['registerErrorBtn']?></button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
     <header>
 		<nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
 			<nav class="navbar navbar-top hidden-xs">
@@ -85,7 +99,6 @@
 					</div>  
 				</div>
 			</nav>
-			<div class="dividline light-grey"></div>
 		</nav>
 	</header>
 	</br>
