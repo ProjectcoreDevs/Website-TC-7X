@@ -42,7 +42,7 @@ $system->db = $db;
 			</div>
 		</div>
     </div>
-	<div class="modal fade regErrorShow" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="bk-modal modal fade regErrorShow" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-md" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
@@ -56,16 +56,53 @@ $system->db = $db;
 			</div>
 		</div>
 	</div>
-	<div class="modal fade modalCoError" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="bk-modal modal fade logCoError" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-md" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
 					<center>
 						<h4><?=$site['connectError']?></h4>
 						<img src="assets/images/regError.png" width="80px"/>
-						<h5 class="coErrorDesc"></h5>
+						<h5 class="logErrorDesc"></h5>
 						<button class="btn btn-danger" data-dismiss="modal"><?=$site['connectErrorBtn']?></button>
 					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bk-modal modal fade loginCo" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-remove"  title="Close"></span>
+					</button>
+					<h3>Log in</h3>
+					<form action="#">
+						<div class="row vertical">
+							<div class="col-md-12">
+								<div class="bk-gap"></div>
+								Email :
+								<input type="email" class="form-control logEmail" placeholder="Email">
+								<div class="bk-gap"></div>
+								Password :
+								<input type="password" class="form-control logPassword" placeholder="Password">
+							</div>
+							<div class="col-md-6">
+								<div class="mnt5">
+									<small><a href="#">Forgot your password ?</a></small>
+								</div>
+								<div class="mnt5">
+									<small><a href="index.php">Not a member yet ? Register!</a></small>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="mnt5">
+									<button class="btn btn-theme btn-block start-login">Log in</button>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -102,7 +139,7 @@ $system->db = $db;
 								echo '<li><a href="#">Account</a></li>';
 							}
 							else{
-								echo '<li><a href="#">Login</a></li>';
+								echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
 							} ?>
 							
 							<li><a href="#">Help</a></li>

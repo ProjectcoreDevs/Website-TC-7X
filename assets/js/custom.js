@@ -23,14 +23,35 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	$('.start-login').on('click',function(){
+		email = $('.logEmail').val();
+		password = $('.logPassword').val();
+		$('.loginCo').modal('hide');
+		$('.loadingShow').modal('show');
+		setTimeout(function(){
+			$.get('ajax/sendLogin.php?logEmail='+email+'&logPassword='+password, function(response) {
+				if(response == 1){
+					location.reload();
+				}
+				else{
+					$('.loadingShow').modal('hide');
+					$('.logCoError').modal('show');
+					$('.logErrorDesc').html(response);
+				}
+			});
+		}, 2000);
+		return false;
+	});
+	
 	$('.send-disconnect').on('click',function(){
-		$('.modalDisconnect').modal('show');
+		$('.loadingShow').modal('show');
 		setTimeout(function(){
 			$.get('ajax/sendDisconnect.php?isDisconnect=true', function(response){
 				if(response == 1)
 					window.location = "index.php";
 				else{
-					$('.modalCoError').modal('show');
+					$('.loadingShow').modal('hide');
+					$('.logCoError').modal('show');
 					$('.logErrorDesc').html(response);
 				}
 			});
