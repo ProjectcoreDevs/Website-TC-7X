@@ -122,106 +122,89 @@ if($auth->isLogged()){
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mnt5" >
 				<div class="panel panel-theme">
 					<div class="panel-heading">
-						<h3 class="panel-title">Welcome, <?=$acc->username?></h3>
+						<h3 class="panel-title">Welcome to the store, <?=$acc->username?></h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-3 col-lg-3 " align="center">
-								<img alt="User Avatar" src="assets/images/no-avatar.png" class="img-circle img-responsive">
-								<button class="btn btn-theme btn-xs pull-right"><span class="fa fa-pencil"></span></button>
-							</div>
 							<div class="col-md-9 col-lg-9"> 
 								<table class="table">
 									<tbody>
 										<tr>
-											<td>Username :</td>
-											<td class="editUsernameText"><?=$acc->username?></td>
-											<td class="editUsernameInput" style="display:none;"><input type="text" class="form-control editUsername" placeholder="Username" required/></td>
-										</tr>
-										<tr>
-											<td>Email :</td>
-											<td class="editEmailText"><?=$acc->email?></td>
-											<td class="editEmailInput" style="display:none;"><input type="email" class="form-control editEmail" placeholder="Email" required/></td>
-										</tr>
-										<tr>
-											<td>Password :</td>
-											<td class="editPasswordText">*****</td>
-											<td class="editPasswordInput" style="display:none;">
-												<input type="password" class="form-control editPassword" placeholder="Password" required/>
-											</td>
-										</tr>
-										<tr class="editPasswordConfirmInput" style="display:none;">
-											<td>Confirm Password :</td>
-											<td>
-												<input type="password" class="form-control editRepassword" placeholder="Repeat password" required/>
-											</td>
-										</tr>
-										<tr class="submitEdit" style="display:none;">
-											<td>Validate :</td>
-											<td><button class="btn btn-sm btn-theme send-edit-profile pull-right"><span class="fa fa-refresh"></span> Update my profile</button></td>
-										</tr>
-										<tr>
-											<td>Rank :</td>
-											<td>
-											<?php if($acc->rank==0){
-												echo $site['accountRank0'];
-											}
-											elseif($acc->rank==1){
-												echo $site['accountRank1'];
-											}
-											elseif($acc->rank==2){
-												echo $site['accountRank2'];
-											}
-											elseif($acc->rank==3){
-												echo $site['accountRank3'];
-											}
-											elseif($acc->rank==4){
-												echo $site['accountRank4'];
-											}
-											else{
-												echo $site['accountRank0'];
-											}?></td>
-										</tr>
-										<tr>
-											<td>Date of register :</td>
-											<td><?=date('m/d/Y', $acc->register_date)?></td>
-										</tr>
-										<tr>
-											<td>Last update :</td>
-											<td><?=date('m/d/Y', $acc->lastConnect)?></td>
-										</tr>
-										<tr>
-											<td>Last connect :</td>
-											<td><?=$system->timeAgo($acc->lastConnect)?></td>
-										</tr>
-										<tr>
-											<td>Last IP :</td>
-											<td><?=$acc->lastIP?></td>
-										</tr>
-										<tr>
-											<td>My characters :</td>
-											<td><?=$numChars?></td>
-										</tr>
-										<tr>
-											<td>My VIP points :</td>
-											<td><?=$acc->credit?></td>
+											<td><h4>Filters :</h4></td>
+											<td><select class="form-control"><option>Server</option></select></td>
+											<td><select class="form-control"><option>Characters</option></select></td>
+											<td><select class="form-control"><option>Categories</option></select></td>
+											<td><button class="btn btn-theme">Apply</button></td>
 										</tr>
 									</tbody>
 								</table>
-								<a href="unlock-character.php" type="button" class="btn btn-theme">Unlock my character</a>
-								<a href="#" type="button" class="btn btn-theme">Manage my characters</a>
-								<div class="pull-right">
-								<a href="store.php" type="button" class="btn btn-theme">Store</a>
-								<a href="#" type="button" class="btn btn-theme">My orders</a>
+								<table class="table">
+									<tbody>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
+											<td>1 point</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
+											<td>1 point</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
+											<td>4 points</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
+											<td>3 points</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
+											<td>2 points</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
+											<td>1 point</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
+											<td>2 points</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
+											<td>8 points</td>
+											<td><button class="btn btn-theme">Add to cart</button></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
+							<div class="col-md-3 col-lg-3 " align="center">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td><h3>My cart</h3></td>
+										</tr>
+										<tr>
+											<td><img src="assets/images/coffre.jpg" width="20px"/> Product Test test</td>
+											<td><?=$acc->credit?></td>
+										</tr>
+										<tr>
+											<td><h3>Total : </h3></td>
+											<td><h3>0</h3></td>
+										</tr>
+									</tbody>
+								</table>
+								<button class="btn btn-theme btn-md btn-block">Checkout</button>
 							</div>
 						</div>
 					</div>
 					<div class="panel-footer">
 						<a href="#" type="button" class="btn btn-sm btn-theme send-disconnect">Disconnect</a>
-						<span class="pull-right">
-							<a href="#" type="button" class="btn btn-sm btn-theme edit-profile" title="Edit my profile"><i class="glyphicon glyphicon-edit"></i></a>
-						</span>
 					</div>
 				</div>
 			</div>

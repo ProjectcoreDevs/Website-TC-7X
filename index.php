@@ -137,7 +137,8 @@ $system->db = $db;
 							<li><a href="#">Forum</a></li>
 							<li><a href="#">Bugtracker</a></li>
 							<?php if($auth->isLogged()){
-								echo '<li><a href="account.php">Account</a></li>';
+								echo '<li><a href="account.php">Account</a></li>
+								<li><a href="store.php">Store</a></li>';
 							}
 							else{
 								echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
@@ -153,7 +154,8 @@ $system->db = $db;
 								<li><a href="#">Forum</a></li> 
 								<li><a href="#">Bugtracker</a></li> 
 								<?php if($auth->isLogged()){
-									echo '<li><a href="account.php">Account</a></li>';
+									echo '<li><a href="account.php">Account</a></li>
+									<li><a href="store.php">Store</a></li>';
 								}
 								else{
 									echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
@@ -253,7 +255,7 @@ $system->db = $db;
 				<span>|</span>
 				<a href="#">Privacy Policy</a>
 				<div class="pull-right">
-				<a href="#">Home</a>
+				<a href="index.php">Home</a>
 				<span>|</span>
 				<a href="#">Download</a>
 				<span>|</span>
@@ -261,7 +263,14 @@ $system->db = $db;
 				<span>|</span>
 				<a href="#">Bugtracker</a>
 				<span>|</span>
-				<a href="#">Login</a>
+				<?php if($auth->isLogged()){
+					echo '<a href="account.php">Account</a>
+					<span>|</span>
+					<a href="store.php">Store</a>';
+				}
+				else{
+					echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
+				} ?>
 				<span>|</span>
 				<a href="#">Help</a>
 				</div>
