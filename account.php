@@ -105,7 +105,7 @@ $system->db = $db;
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mnt5" >
 				<div class="panel panel-theme">
 					<div class="panel-heading">
-						<h3 class="panel-title">PseudoTest</h3>
+						<h3 class="panel-title">Welcome, PseudoTest</h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -118,11 +118,30 @@ $system->db = $db;
 									<tbody>
 										<tr>
 											<td>Username :</td>
-											<td>PseudoTest</td>
+											<td class="editUsernameText">PseudoTest</td>
+											<td class="editUsernameInput" style="display:none;"><input type="text" class="form-control editUsername" placeholder="Username" required/></td>
 										</tr>
 										<tr>
-											<td>Email:</td>
-											<td>test@test.com</td>
+											<td>Email :</td>
+											<td class="editEmailText">test@test.com</td>
+											<td class="editEmailInput" style="display:none;"><input type="email" class="form-control editEmail" placeholder="Email" required/></td>
+										</tr>
+										<tr>
+											<td>Password :</td>
+											<td class="editPasswordText">*****</td>
+											<td class="editPasswordInput" style="display:none;">
+												<input type="password" class="form-control editPassword" placeholder="Password" required/>
+											</td>
+										</tr>
+										<tr class="editPasswordConfirmInput" style="display:none;">
+											<td>Confirm Password :</td>
+											<td>
+												<input type="password" class="form-control editRepassword" placeholder="Repeat password" required/>
+											</td>
+										</tr>
+										<tr class="submitEdit" style="display:none;">
+											<td>Validate :</td>
+											<td><button class="btn btn-sm btn-theme send-edit-profile pull-right"><span class="fa fa-refresh"></span> Update my profile</button></td>
 										</tr>
 										<tr>
 											<td>Rank :</td>
@@ -130,6 +149,10 @@ $system->db = $db;
 										</tr>
 										<tr>
 											<td>Date of register :</td>
+											<td>01/24/1988</td>
+										</tr>
+										<tr>
+											<td>Last update :</td>
 											<td>01/24/1988</td>
 										</tr>
 										<tr>
@@ -156,9 +179,9 @@ $system->db = $db;
 						</div>
 					</div>
 					<div class="panel-footer">
-						<a href="#" type="button" class="btn btn-sm btn-theme"><i class="glyphicon glyphicon-edit"></i></a>
+						<a href="#" type="button" class="btn btn-sm btn-theme send-disconnect">Disconnect</a>
 						<span class="pull-right">
-							<a href="#" type="button" class="btn btn-sm btn-theme send-disconnect">Disconnect</a>
+							<a href="#" type="button" class="btn btn-sm btn-theme edit-profile" title="Edit my profile"><i class="glyphicon glyphicon-edit"></i></a>
 						</span>
 					</div>
 				</div>

@@ -58,6 +58,16 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	$('.edit-profile').on('click',function(){
+		$('.editUsernameText').hide();
+		$('.editUsernameInput').show();
+		$('.editEmailText').hide();
+		$('.editEmailInput').show();
+		$('.editPasswordText').hide();
+		$('.editPasswordInput').show();
+		$('.editPasswordConfirmInput').show();
+		$('.submitEdit').show();
+	});
 });
 
 $(window).scroll(function() {
