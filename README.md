@@ -1,6 +1,6 @@
 # CMS7x
 
-<a href="https://www.hostingpics.net/viewer.php?id=964916site.png"><img src="https://img15.hostingpics.net/thumbs/mini_964916site.png" alt="Heberger image" /></a>
+<a href="https://www.hostingpics.net/viewer.php?id=964916site.png" target="_blank"><img src="https://img15.hostingpics.net/thumbs/mini_964916site.png" alt="Heberger image" /></a>
 
 Website for trinitycore 7x
 
