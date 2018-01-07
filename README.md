@@ -1,6 +1,6 @@
 # CMS7x
-Website for core 7x
+Website for trinitycore 7x
 
-Website for Legion private server Open source.
+Website for World Of Warcraft (Wow) Legion private server Open source.
 
 Developer : projectcoreDevs
