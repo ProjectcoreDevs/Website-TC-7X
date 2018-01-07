@@ -12,7 +12,7 @@ $system->db = $db;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Website Title</title>
+    <title><?=$websiteTitle?></title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -129,10 +129,10 @@ $system->db = $db;
 				<div class="container">
 					<div class="flex-container">  
 						<div class="navbar-header flex-item">
-							<div class="navbar-brand" href="index.php">Website Title</div>
+							<div class="navbar-brand" href="index.php"><?=$websiteTitle?></div>
 						</div>
 						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-							<li><a href="#">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li><a href="#">Download</a></li>
 							<li><a href="#">Forum</a></li>
 							<li><a href="#">Bugtracker</a></li>
@@ -141,8 +141,7 @@ $system->db = $db;
 							}
 							else{
 								echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
-							} ?>
-							
+							} ?>							
 							<li><a href="#">Help</a></li>
 						</ul>
 						<div class="dropdown visible-xs pull-right">
@@ -150,10 +149,15 @@ $system->db = $db;
 								<span class="glyphicon glyphicon-align-justify"></span> 
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="#">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li><a href="#">Forum</a></li> 
 								<li><a href="#">Bugtracker</a></li> 
-								<li><a href="#">Login</a></li>
+								<?php if($auth->isLogged()){
+									echo '<li><a href="account.php">Account</a></li>';
+								}
+								else{
+									echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
+								} ?>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Help</a></li>
 							</ul>

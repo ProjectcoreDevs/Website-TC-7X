@@ -4,6 +4,15 @@ $auth = new Auth;
 $system = new System;
 $system->db = $db;
 if($auth->isLogged()){
+	$accs = $db->query("SELECT * FROM ".$web_database.".account WHERE auth_account='".$_SESSION['cms_user_id']."'");
+	$acc = $accs->fetch_object();
+	$chars = $db->query("SELECT * FROM ".$characters_database.".characters WHERE account='".$_SESSION['cms_user_id']."'");
+	if($acc->credit == null)
+		$credit = '0';
+	else
+		$credit = $acc->credit;
+	$numChars = $chars->num_rows;
+	
 ?>
 <!DOCTYPE html>
 <html lang="en" class="full-height">
@@ -13,7 +22,7 @@ if($auth->isLogged()){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Website Title</title>
+    <title><?=$websiteTitle?></title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -65,15 +74,15 @@ if($auth->isLogged()){
 				<div class="container">
 					<div class="flex-container">  
 						<div class="navbar-header flex-item">
-							<div class="navbar-brand" href="index.php">Website Title</div>
+							<div class="navbar-brand" href="index.php"><?=$websiteTitle?></div>
 						</div>
 						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-							<li><a href="#">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li><a href="#">Download</a></li>
 							<li><a href="#">Forum</a></li>
 							<li><a href="#">Bugtracker</a></li>
 							<?php if($auth->isLogged()){
-								echo '<li><a href="#">Account</a></li>';
+								echo '<li><a href="account.php">Account</a></li>';
 							}
 							else{
 								echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
@@ -89,7 +98,12 @@ if($auth->isLogged()){
 								<li><a href="#">Home</a></li>
 								<li><a href="#">Forum</a></li> 
 								<li><a href="#">Bugtracker</a></li> 
-								<li><a href="#">Login</a></li>
+								<?php if($auth->isLogged()){
+									echo '<li><a href="account.php">Account</a></li>';
+								}
+								else{
+									echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
+								} ?>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Help</a></li>
 							</ul>
@@ -106,7 +120,7 @@ if($auth->isLogged()){
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mnt5" >
 				<div class="panel panel-theme">
 					<div class="panel-heading">
-						<h3 class="panel-title">Welcome, PseudoTest</h3>
+						<h3 class="panel-title">Welcome, <?=$acc->username?></h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -119,12 +133,12 @@ if($auth->isLogged()){
 									<tbody>
 										<tr>
 											<td>Username :</td>
-											<td class="editUsernameText">PseudoTest</td>
+											<td class="editUsernameText"><?=$acc->username?></td>
 											<td class="editUsernameInput" style="display:none;"><input type="text" class="form-control editUsername" placeholder="Username" required/></td>
 										</tr>
 										<tr>
 											<td>Email :</td>
-											<td class="editEmailText">test@test.com</td>
+											<td class="editEmailText"><?=$acc->email?></td>
 											<td class="editEmailInput" style="display:none;"><input type="email" class="form-control editEmail" placeholder="Email" required/></td>
 										</tr>
 										<tr>
@@ -146,31 +160,49 @@ if($auth->isLogged()){
 										</tr>
 										<tr>
 											<td>Rank :</td>
-											<td>Player</td>
+											<td>
+											<?php if($acc->rank==0){
+												echo $site['accountRank0'];
+											}
+											elseif($acc->rank==1){
+												echo $site['accountRank1'];
+											}
+											elseif($acc->rank==2){
+												echo $site['accountRank2'];
+											}
+											elseif($acc->rank==3){
+												echo $site['accountRank3'];
+											}
+											elseif($acc->rank==4){
+												echo $site['accountRank4'];
+											}
+											else{
+												echo $site['accountRank0'];
+											}?></td>
 										</tr>
 										<tr>
 											<td>Date of register :</td>
-											<td>01/24/1988</td>
+											<td><?=date('m/d/Y', $acc->register_date)?></td>
 										</tr>
 										<tr>
 											<td>Last update :</td>
-											<td>01/24/1988</td>
+											<td><?=date('m/d/Y', $acc->lastConnect)?></td>
 										</tr>
 										<tr>
 											<td>Last connect :</td>
-											<td>1 hour</td>
+											<td><?=$system->timeAgo($acc->lastConnect)?></td>
 										</tr>
 										<tr>
 											<td>Last IP :</td>
-											<td>127.0.0.1</td>
+											<td><?=$acc->lastIP?></td>
 										</tr>
 										<tr>
 											<td>My characters :</td>
-											<td>2</td>
+											<td><?=$numChars?></td>
 										</tr>
 										<tr>
 											<td>My VIP points :</td>
-											<td>2</td>
+											<td><?=$acc->credit?></td>
 										</tr>
 									</tbody>
 								</table>
