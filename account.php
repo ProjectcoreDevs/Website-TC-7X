@@ -3,6 +3,7 @@ include_once 'core/functions.php';
 $auth = new Auth;
 $system = new System;
 $system->db = $db;
+if($auth->isLogged()){
 ?>
 <!DOCTYPE html>
 <html lang="en" class="full-height">
@@ -219,3 +220,9 @@ $system->db = $db;
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php 
+}
+else{
+	header('Location:index.php');
+}
+?>
