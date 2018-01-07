@@ -137,7 +137,7 @@ $system->db = $db;
 							<li><a href="#">Forum</a></li>
 							<li><a href="#">Bugtracker</a></li>
 							<?php if($auth->isLogged()){
-								echo '<li><a href="#">Account</a></li>';
+								echo '<li><a href="account.php">Account</a></li>';
 							}
 							else{
 								echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
@@ -176,20 +176,20 @@ $system->db = $db;
 		</div>
 		<div class="col-md-6 index-box">
 		<?php if($auth->isLogged()){
-			echo '
+			echo '<div class="bk-widget-content">
 				<div class="col-md-12">
 					<h4>'.$site['loggedMessageTitle'].'</h4>
 				</div>
 				<div class="col-md-12">
-					<h5><a href="#"><span class="glyphicon glyphicon-home"></span>'.$site['readAccount'].'</a></h5>
+					<h5><a href="account.php"><span class="glyphicon glyphicon-home"></span>'.$site['readAccount'].'</a></h5>
 					<h5><a href="#"><span class="glyphicon glyphicon-user"></span>'.$site['charsManagement'].'</a></h5>
 					<h5><a href="#"><span class="glyphicon glyphicon-fire"></span>'.$site['goToStore'].'</a></h5>
 					<h5><a href="#"><span class="glyphicon glyphicon-download"></span>'.$site['downloadLauncher'].'</a></h5>
 				</div>
 				<div class="nk-gap"></div>
 				<div class="col-md-12">
-					<button class="btn btn-register send-disconnect">'.$site['loggedDisconnectBtn'].'</button>
-				</div>';
+					<button class="btn btn-theme send-disconnect">'.$site['loggedDisconnectBtn'].'</button>
+				</div></div>';
 		} else{
 			echo '<h1>Join us !</h1>
 				<form class="" method="" action="#">
@@ -232,7 +232,7 @@ $system->db = $db;
 					</div>
 
 					<div class="form-group ">
-						<button class="btn btn-register btn-lg btn-block sendRegister">Register</button>
+						<button class="btn btn-theme btn-lg btn-block sendRegister">Register</button>
 					</div>
 				</form>';
 				} ?>

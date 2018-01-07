@@ -7,7 +7,6 @@ $(document).ready(function() {
 			regEmail = $('.regEmail').val();
 			regPassword = $('.regPassword').val();
 			regRepassword = $('.regRepassword').val();
-			alert(regUsername+' - '+regEmail+' - '+regPassword+' - '+regRepassword);
 			$.get('ajax/sendRegister.php?regUsername='+regUsername+'&regEmail='+regEmail+'&regPassword='+regPassword+'&regRepassword='+regRepassword, function(response){
 				$('.loadingShow').modal('hide');
 				if(response == 1){
