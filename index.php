@@ -1,6 +1,7 @@
 <?php session_start();
 include_once 'core/functions.php';
 $auth = new Auth;
+$system = new System;
 $system->db = $db;
 ?>
 <!DOCTYPE html>
