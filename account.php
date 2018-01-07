@@ -251,7 +251,7 @@ if($auth->isLogged()){
 					<a href="store.php">Store</a>';
 				}
 				else{
-					echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
+					echo '<a href="#" data-toggle="modal" data-target=".loginCo">Login</a>';
 				} ?>
 				<span>|</span>
 				<a href="#">Help</a>

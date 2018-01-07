@@ -2,9 +2,9 @@
     // Database Configuration
     $_dbhost = '127.0.0.1';					// host
     $_dbuser = 'root';						// database username
-    $_dbpass = 'password';					// database password
+    $_dbpass = 'gogo2012';					// database password
 	
-	$web_database = 'cms_database';			// website database
+	$web_database = 'db_arcania';			// website database
 	$auth_database = 'auth';				// auth database
 	$characters_database = 'characters';	// characters database
     
