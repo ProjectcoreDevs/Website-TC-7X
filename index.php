@@ -269,7 +269,7 @@ $system->db = $db;
 					<a href="store.php">Store</a>';
 				}
 				else{
-					echo '<a href="#" data-toggle="modal" data-target=".loginCo">Login</a>';
+					echo '<li><a href="#" data-toggle="modal" data-target=".loginCo">Login</a></li>';
 				} ?>
 				<span>|</span>
 				<a href="#">Help</a>
