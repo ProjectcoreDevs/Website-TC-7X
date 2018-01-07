@@ -40,23 +40,23 @@ class System {
 		$etime = time() - $ptime;
 		if ($etime < 1)
 		{
-			return 'maintenant';
+			return 'now';
 		}
 		$a = array(
-			365 * 24 * 60 * 60	=> 'année',
-			30 * 24 * 60 * 60	=> 'mois',
-			24 * 60 * 60		=> 'jour',
-			60 * 60				=> 'heure',
+			365 * 24 * 60 * 60	=> 'year',
+			30 * 24 * 60 * 60	=> 'month',
+			24 * 60 * 60		=> 'day',
+			60 * 60				=> 'hour',
 			60					=> 'minute',
-			1					=> 'seconde'
+			1					=> 'second'
 		);
 		$a_plural = array(
-			'année'		=> 'ans',
-			'mois'		=> 'mois',
-			'jour'		=> 'jours',
-			'heure'		=> 'heures',
+			'year'		=> 'years',
+			'month'		=> 'months',
+			'day'		=> 'days',
+			'hour'		=> 'hours',
 			'minute'	=> 'minutes',
-			'seconde'	=> 'secondes'
+			'second'	=> 'seconds'
 			);
 
 		foreach ($a as $secs => $str){
