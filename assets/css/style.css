@@ -15,6 +15,7 @@ header{
 	
 	margin-bottom:100px;
 }
+
 /*double row*/
 .navbar-doublerow > .navbar{
 	display: block;	
@@ -374,10 +375,9 @@ header{
 	flex-direction: row;
 	width: 100%;
 	max-width: 400px;
+	height:40px;
 	margin: 0 auto;
 	border-radius: 2px;
-	padding: 1.4rem 2rem 1.6rem;
-	background: rgba(0, 0, 0, 0.1);
+	background-color: transparent;
 	color:#44cbff;
 }
-

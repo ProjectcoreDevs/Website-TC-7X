@@ -133,7 +133,7 @@ if($auth->isLogged()){
 										<tr>
 											<td><h4>Filters :</h4></td>
 											<td>
-												<select class="form-control" onchange="serverSelected(this.value);">
+												<select class="legion-style-input" onchange="serverSelected(this.value);">
 													<option value="0">Servers</option>';
 													<?php while($realm = $realms->fetch_object()){
 														echo '<option value="'.$realm->id.'">'.$realm->name.'</option>';
@@ -141,7 +141,7 @@ if($auth->isLogged()){
 												</select>
 											</td>
 											<td>
-												<select class="form-control" onchange="characterSelected(this.value);">
+												<select class="legion-style-input" onchange="characterSelected(this.value);">
 													<option value="0">Characters</option>
 													<?php if($numChars <= 0) {
 														echo '<option value="'.$numChars.'">No characters</option>';
@@ -153,7 +153,7 @@ if($auth->isLogged()){
 												</select>
 											</td>
 											<td>
-												<select class="form-control" onchange="categorieSelected(this.value);">
+												<select class="legion-style-input" onchange="categorieSelected(this.value);">
 													<option value="0">Categories</option>
 													<option value="100">All categories</option>
 													<option value="1">Coffers</option>
