@@ -81,13 +81,18 @@ $system->db = $db;
 					<h3>Log in</h3>
 					<form action="#">
 						<div class="row vertical">
-							<div class="col-md-12">
+							<div class="col-sm-12 col-md-12">
 								<div class="bk-gap"></div>
-								Email :
-								<input type="email" class="form-control logEmail" placeholder="Email">
-								<div class="bk-gap"></div>
-								Password :
-								<input type="password" class="form-control logPassword" placeholder="Password">
+								<div class="col-sm-3 col-md-3">
+									<h5>Email :</h5>
+									<div class="bk-gap"></div>
+									<h5>Password :</h5>
+								</div>
+								<div class="col-sm-9 col-md-9">
+									<input type="email" class="form-control legion-style-input logEmail" placeholder="Email">
+									<div class="bk-gap"></div>
+									<input type="password" class="form-control legion-style-input logPassword" placeholder="Password">
+								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="mnt5">
