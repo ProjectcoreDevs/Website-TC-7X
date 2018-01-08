@@ -81,3 +81,49 @@ $(window).scroll(function() {
 
 });
 
+function getProduct(){
+	server = $('.selectedServer').val();
+	character = $('.selectedCharacter').val();
+	categorie = $('.selectedCategorie').val();
+	if(server==0){
+		$('.noSelectServer').show();
+		$('.noSelectCharacter').hide();
+		$('.noSelectCategorie').hide();
+		$('.productResult').html('');
+	}
+	else if(character==0){
+		$('.noSelectServer').hide();
+		$('.noSelectCharacter').show();
+		$('.noSelectCategorie').hide();
+		$('.productResult').html('');
+	}
+	else if(categorie==0){
+		$('.noSelectServer').hide();
+		$('.noSelectCharacter').hide();
+		$('.noSelectCategorie').show();
+		$('.productResult').html('');
+	}
+	else{
+		$('.noSelectServer').hide();
+		$('.noSelectCharacter').hide();
+		$('.noSelectCategorie').hide();
+		$.get('ajax/getProducts.php?sendServer='+server+'&sendCharacter='+character+'&categorie='+categorie, function(response){
+			$('.productResult').html(response);
+		});
+	}
+}
+
+function serverSelected(value){
+	$('.selectedServer').val(value);
+	getProduct();
+}
+
+function characterSelected(value){
+	$('.selectedCharacter').val(value);
+	getProduct();
+}
+
+function categorieSelected(value){
+	$('.selectedCategorie').val(value);
+	getProduct();
+}

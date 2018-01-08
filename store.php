@@ -4,6 +4,7 @@ $auth = new Auth;
 $system = new System;
 $system->db = $db;
 if($auth->isLogged()){
+	$realms = $db->query("SELECT * FROM ".$auth_database.".realmlist");
 	$accs = $db->query("SELECT * FROM ".$web_database.".account WHERE auth_account='".$_SESSION['cms_user_id']."'");
 	$acc = $accs->fetch_object();
 	$chars = $db->query("SELECT * FROM ".$characters_database.".characters WHERE account='".$_SESSION['cms_user_id']."'");
@@ -25,7 +26,7 @@ if($auth->isLogged()){
     <title><?=$websiteTitle?></title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -131,56 +132,51 @@ if($auth->isLogged()){
 									<tbody>
 										<tr>
 											<td><h4>Filters :</h4></td>
-											<td><select class="form-control"><option>Server</option></select></td>
-											<td><select class="form-control"><option>Characters</option></select></td>
-											<td><select class="form-control"><option>Categories</option></select></td>
-											<td><button class="btn btn-theme">Apply</button></td>
+											<td>
+												<select class="form-control" onchange="serverSelected(this.value);">
+													<option value="0">Servers</option>';
+													<?php while($realm = $realms->fetch_object()){
+														echo '<option value="'.$realm->id.'">'.$realm->name.'</option>';
+													} ?>
+												</select>
+											</td>
+											<td>
+												<select class="form-control" onchange="characterSelected(this.value);">
+													<option value="0">Characters</option>
+													<?php if($numChars <= 0) {
+														echo '<option value="'.$numChars.'">No characters</option>';
+													}else{
+														while($char = $chars->fetch_object()){
+															echo '<option value="'.$char->guid.'">'.$char->name.'</option>';
+														} 
+													} ?>
+												</select>
+											</td>
+											<td>
+												<select class="form-control" onchange="categorieSelected(this.value);">
+													<option value="0">Categories</option>
+													<option value="100">All categories</option>
+													<option value="1">Coffers</option>
+													<option value="2">Golds</option>
+													<option value="3">Flying</option>
+													<option value="4">Mounts</option>
+													<option value="5">Equipments</option>
+													<option value="6">Leveling</option>
+													<option value="7">Services</option>
+													<option value="8">storeFilterDivers</option>
+												</select>
+											</td>
 										</tr>
 									</tbody>
 								</table>
+								<input type="hidden" class="selectedServer" value=""/>
+								<input type="hidden" class="selectedCharacter" value=""/>
+								<input type="hidden" class="selectedCategorie" value=""/>
+								<div class="noSelectServer"><center>Veuillez séléctionner un serveur.</center></div>
+								<div class="noSelectCharacter" style="display:none;"><center>Veuillez séléctionner un personnage.</center></div>
+								<div class="noSelectCategorie" style="display:none;"><center>Veuillez séléctionner une catégorie.</center></div>
 								<table class="table">
-									<tbody>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
-											<td>1 point</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
-											<td>1 point</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
-											<td>4 points</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
-											<td>3 points</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
-											<td>2 points</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
-											<td>1 point</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test test</td>
-											<td>2 points</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="30px"/> Product Test</td>
-											<td>8 points</td>
-											<td><button class="btn btn-theme">Add to cart</button></td>
-										</tr>
-									</tbody>
+									<tbody class="productResult"></tbody>
 								</table>
 							</div>
 							<div class="col-md-3 col-lg-3 " align="center">

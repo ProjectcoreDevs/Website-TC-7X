@@ -367,3 +367,17 @@ header{
 	font-weight:bold;
 	background-color: rgba(0, 0, 0, 0.8);
 }
+
+.legion-style-input {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	border-radius: 2px;
+	padding: 1.4rem 2rem 1.6rem;
+	background: rgba(0, 0, 0, 0.1);
+	color:#44cbff;
+}
+

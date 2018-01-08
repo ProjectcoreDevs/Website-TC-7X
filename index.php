@@ -15,7 +15,7 @@ $system->db = $db;
     <title><?=$websiteTitle?></title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -198,13 +198,13 @@ $system->db = $db;
 				</div></div>';
 		} else{
 			echo '<h1>Join us !</h1>
-				<form class="" method="" action="#">
-					<div class="form-group">
+				<form class="" method="" action="#" style="margin: 20px 60px 20px 60px;">
+					<div class="form-group ">
 						<label for="username" class="cols-sm-2 control-label">Username</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control regUsername"  placeholder="Enter your Username"/>
+								<input type="text" class="form-control legion-style-input regUsername"  placeholder="Enter your Username"/>
 							</div>
 						</div>
 					</div>
@@ -213,7 +213,7 @@ $system->db = $db;
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control regEmail"  placeholder="Enter your Email"/>
+								<input type="text" class="form-control legion-style-input regEmail"  placeholder="Enter your Email"/>
 							</div>
 						</div>
 					</div>
@@ -222,7 +222,7 @@ $system->db = $db;
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<input type="password" class="form-control regPassword"  placeholder="Enter your Password"/>
+								<input type="password" class="form-control legion-style-input regPassword"  placeholder="Enter your Password"/>
 							</div>
 						</div>
 					</div>
@@ -232,11 +232,10 @@ $system->db = $db;
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<input type="password" class="form-control regRepassword"  placeholder="Confirm your Password"/>
+								<input type="password" class="form-control legion-style-input regRepassword"  placeholder="Confirm your Password"/>
 							</div>
 						</div>
 					</div>
-
 					<div class="form-group ">
 						<button class="btn btn-theme btn-lg btn-block sendRegister">Register</button>
 					</div>
