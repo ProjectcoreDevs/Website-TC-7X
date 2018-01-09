@@ -39,7 +39,7 @@ if(isset($_GET['sendServer']) && isset($_GET['sendCharacter']) && isset($_GET['c
 				
 				echo '<tr>
 					<td><img src="assets/images/'.$items->image.'" style="width:30px;border-radius:5px"/> '.$title.'</td>
-					<td>'.$items->price.' point</td>
+					<td>'.$items->price.' <img src="assets/images/pts.png" width="15px"/></td>
 					<td><button class="btn btn-theme pull-right" onclick="addProductCart('.$items->id.')">'.$addToCart.'</button></td>
 				</tr>';
 			}

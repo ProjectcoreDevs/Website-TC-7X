@@ -2,24 +2,45 @@ $(document).ready(function() {
 	
 	$('.sendRegister').on('click',function(){
 		$('.loadingShow').modal('show');
-		setTimeout(function(){
-			regUsername = $('.regUsername').val();
-			regEmail = $('.regEmail').val();
-			regPassword = $('.regPassword').val();
-			regRepassword = $('.regRepassword').val();
-			$.get('ajax/sendRegister.php?regUsername='+regUsername+'&regEmail='+regEmail+'&regPassword='+regPassword+'&regRepassword='+regRepassword, function(response){
-				$('.loadingShow').modal('hide');
-				if(response == 1){
-					location.reload();
-				}
-				else{
-					$('.regErrorShow').modal('show');
-					$('.regErrorInfo').html(response);
-				}
-			});
-		}, 2000);
-		
-		return false;
+		regUsername = $('.regUsername').val();
+		regEmail = $('.regEmail').val();
+		regPassword = $('.regPassword').val();
+		regRepassword = $('.regRepassword').val();
+		if(regUsername == "" || regUsername == null){
+			$('.loadingShow').modal('hide');
+			$('.regErrorShow').modal('show');
+			$('.regErrorInfo').html('Please enter a username !');
+		}
+		else if(regEmail == "" || regEmail == null){
+			$('.loadingShow').modal('hide');
+			$('.regErrorShow').modal('show');
+			$('.regErrorInfo').html('Please enter an email address !');
+		}
+		else if(regPassword == "" || regPassword == null){
+			$('.loadingShow').modal('hide');
+			$('.regErrorShow').modal('show');
+			$('.regErrorInfo').html('Please enter a password !');
+		}
+		else if(regRepassword == "" || regRepassword == null){
+			$('.loadingShow').modal('hide');
+			$('.regErrorShow').modal('show');
+			$('.regErrorInfo').html('Please confirm your password !');
+		}
+		else{
+			setTimeout(function(){
+				$.get('ajax/sendRegister.php?regUsername='+regUsername+'&regEmail='+regEmail+'&regPassword='+regPassword+'&regRepassword='+regRepassword, function(response){
+					$('.loadingShow').modal('hide');
+					if(response == 1){
+						location.reload();
+					}
+					else{
+						$('.regErrorShow').modal('show');
+						$('.regErrorInfo').html(response);
+					}
+				});
+				return false;
+			}, 2000);
+		}
 	});
 	
 	$('.start-login').on('click',function(){
@@ -127,3 +148,29 @@ function categorieSelected(value){
 	$('.selectedCategorie').val(value);
 	getProduct();
 }
+
+function initApps(){
+	$.get('ajax/getCart.php?initCart=true');
+	getAllCartItems();
+	return false;
+}
+
+function getAllCartItems(){
+	$.get('ajax/getCart.php?getAllCartItems=true', function(response) {
+		$('.productsCart').html(response);
+	});
+	return false;
+}
+
+function addProductCart(pID){
+	$.get('ajax/getCart.php?addItem=true&itemID='+pID);
+	getAllCartItems();
+	return false;
+}
+	
+function delProductCart(pID){
+	$.get('ajax/getCart.php?delItem=true&itemID='+pID)
+	getAllCartItems();
+	return false;
+}
+

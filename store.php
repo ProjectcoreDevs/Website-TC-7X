@@ -29,7 +29,7 @@ if($auth->isLogged()){
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="initApps();">
 	<div id="video-fond">
 		<video autoplay loop>
 			<source type="video/webm" src="assets/images/header-illidan.webm">
@@ -179,23 +179,15 @@ if($auth->isLogged()){
 									<tbody class="productResult"></tbody>
 								</table>
 							</div>
-							<div class="col-md-3 col-lg-3 " align="center">
-								<table class="table">
-									<tbody>
-										<tr>
-											<td><h3>My cart</h3></td>
-										</tr>
-										<tr>
-											<td><img src="assets/images/coffre.jpg" width="20px"/> Product Test test</td>
-											<td><?=$acc->credit?></td>
-										</tr>
-										<tr>
-											<td><h3>Total : </h3></td>
-											<td><h3>0</h3></td>
-										</tr>
-									</tbody>
-								</table>
-								<button class="btn btn-theme btn-md btn-block">Checkout</button>
+							<div class="col-md-3 col-lg-3">
+								<h3 style="border-bottom:2px solid #fff;padding-bottom:5px;">My cart</h3>
+								<div class="productsCart">
+									<div style="border-bottom:1px solid #5e5e5e;padding-bottom:5px;">
+										<img src="assets/images/coffre.jpg" width="20px"/> Product Test test <span class="pull-right" style="margin-right:5px">0 <img src="assets/images/pts.png" width="10px"/></span><?=$acc->credit?>
+									</div>
+									<h3 style="border-top:2px solid #fff;padding-top:5px;">Total : <span class="pull-right"> 0 <img src="assets/images/pts.png" width="15px"/></span></h3>
+									<button class="btn btn-theme btn-md btn-block">Checkout</button>
+								</div>
 							</div>
 						</div>
 					</div>
