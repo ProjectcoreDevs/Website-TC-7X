@@ -29,7 +29,7 @@ if($auth->isLogged()){
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body onload="initApps();">
+<body onload="initCharacters();">
 	<div id="video-fond">
 		<video autoplay loop>
 			<source type="video/webm" src="assets/images/header-illidan.webm">
@@ -123,65 +123,34 @@ if($auth->isLogged()){
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mnt5" >
 				<div class="panel panel-theme">
 					<div class="panel-heading">
-						<h3 class="panel-title">Welcome to the store, <?=$acc->username?></h3>
+						<h3 class="panel-title">Welcome to the characters manager, <?=$acc->username?></h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-9 col-lg-9"> 
 								<table class="table">
-									<tbody>
-										<tr>
-											<td><h4>Filters :</h4></td>
-											<td>
-												<select class="legion-style-input" onchange="serverSelected(this.value);">
-													<option value="0">Servers</option>';
-													<?php while($realm = $realms->fetch_object()){
-														echo '<option value="'.$realm->id.'">'.$realm->name.'</option>';
-													} ?>
-												</select>
-											</td>
-											<td>
-												<select class="legion-style-input" onchange="characterSelected(this.value);">
-													<option value="0">Characters</option>
-													<?php if($numChars <= 0) {
-														echo '<option value="'.$numChars.'">No characters</option>';
-													}else{
-														while($char = $chars->fetch_object()){
-															echo '<option value="'.$char->guid.'">'.$char->name.'</option>';
-														} 
-													} ?>
-												</select>
-											</td>
-											<td>
-												<select class="legion-style-input" onchange="categorieSelected(this.value);">
-													<option value="0">Categories</option>
-													<option value="100">All categories</option>
-													<option value="1">Coffers</option>
-													<option value="2">Golds</option>
-													<option value="3">Flying</option>
-													<option value="4">Mounts</option>
-													<option value="5">Equipments</option>
-													<option value="6">Leveling</option>
-													<option value="7">Services</option>
-													<option value="8">storeFilterDivers</option>
-												</select>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-								<input type="hidden" class="selectedServer" value=""/>
-								<input type="hidden" class="selectedCharacter" value=""/>
-								<input type="hidden" class="selectedCategorie" value=""/>
-								<div class="noSelectServer"><center>Veuillez séléctionner un serveur.</center></div>
-								<div class="noSelectCharacter" style="display:none;"><center>Veuillez séléctionner un personnage.</center></div>
-								<div class="noSelectCategorie" style="display:none;"><center>Veuillez séléctionner une catégorie.</center></div>
-								<table class="table">
-									<tbody class="productResult"></tbody>
+									<tbody class="charactersResult"></tbody>
 								</table>
 							</div>
-							<div class="col-md-3 col-lg-3">
-								<h3 style="border-bottom:2px solid #fff;padding-bottom:5px;">My cart</h3>
-								<div class="productsCart"></div>
+							<div class="col-md-3 col-lg-3"> 
+								<table class="table">
+									<tbody>
+										<h3 style="border-bottom:2px solid #fff;padding-bottom:5px;">Unlock character</h3>
+										<select class="form-control" style="margin-bottom:5px;">
+											<option>Select a server</option>
+										</select>
+										<select class="form-control" style="margin-bottom:5px;">
+											<option>Select your Character</option>
+										</select>
+										<button class="btn btn-theme btn-block">Unlock</button>
+									</tbody>
+								</table>
+								<table class="table">
+									<tbody>
+										<h3 style="border-bottom:2px solid #fff;padding-bottom:5px;">Our servers</h3>
+										<img src="assets/images/exp-legion-icon.png" width="60px"/> Server Name <img src="assets/images/online.png" width="10px"/>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

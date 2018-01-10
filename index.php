@@ -193,7 +193,7 @@ $system->db = $db;
 				</div>
 				<div class="col-md-12">
 					<h5><a href="account.php"><span class="glyphicon glyphicon-home"></span>'.$site['readAccount'].'</a></h5>
-					<h5><a href="#"><span class="glyphicon glyphicon-user"></span>'.$site['charsManagement'].'</a></h5>
+					<h5><a href="characters.php"><span class="glyphicon glyphicon-user"></span>'.$site['charsManagement'].'</a></h5>
 					<h5><a href="store.php"><span class="glyphicon glyphicon-fire"></span>'.$site['goToStore'].'</a></h5>
 					<h5><a href="#"><span class="glyphicon glyphicon-download"></span>'.$site['downloadLauncher'].'</a></h5>
 				</div>

@@ -155,6 +155,13 @@ function initApps(){
 	return false;
 }
 
+function initCharacters(){
+	$.get('ajax/getCharacters.php?initCharacterLists=true', function(response){
+		$('.charactersResult').html(response);
+	});
+	return false;
+}
+
 function getAllCartItems(){
 	$.get('ajax/getCart.php?getAllCartItems=true', function(response) {
 		$('.productsCart').html(response);

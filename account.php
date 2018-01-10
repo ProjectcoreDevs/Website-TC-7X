@@ -209,7 +209,7 @@ if($auth->isLogged()){
 									</tbody>
 								</table>
 								<a href="unlock-character.php" type="button" class="btn btn-theme">Unlock my character</a>
-								<a href="#" type="button" class="btn btn-theme">Manage my characters</a>
+								<a href="characters.php" type="button" class="btn btn-theme">Manage my characters</a>
 								<div class="pull-right">
 								<a href="store.php" type="button" class="btn btn-theme">Store</a>
 								<a href="#" type="button" class="btn btn-theme">My orders</a>
