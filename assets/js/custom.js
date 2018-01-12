@@ -149,7 +149,7 @@ function categorieSelected(value){
 	getProduct();
 }
 
-function initApps(){
+function initCart(){
 	$.get('ajax/getCart.php?initCart=true');
 	getAllCartItems();
 	return false;

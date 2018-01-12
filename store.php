@@ -29,7 +29,7 @@ if($auth->isLogged()){
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
-<body onload="initApps();">
+<body onload="initCart();">
 	<div id="video-fond">
 		<video autoplay loop>
 			<source type="video/webm" src="assets/images/header-illidan.webm">
