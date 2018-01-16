@@ -136,25 +136,35 @@ if($auth->isLogged()){
 										<tr>
 											<td>Username :</td>
 											<td class="editUsernameText"><?=$acc->username?></td>
-											<td class="editUsernameInput" style="display:none;"><input type="text" class="form-control editUsername" placeholder="Username" required/></td>
+											<td class="editUsernameInput" style="display:none;"><input type="text" class="form-control editUsername" placeholder="Username" value="<?=$acc->username?>" required/></td>
 										</tr>
 										<tr>
 											<td>Email :</td>
 											<td class="editEmailText"><?=$acc->email?></td>
-											<td class="editEmailInput" style="display:none;"><input type="email" class="form-control editEmail" placeholder="Email" required/></td>
+											<td class="editEmailInput" style="display:none;"><input type="email" class="form-control editEmail" placeholder="Email" value="<?=$acc->email?>" required/></td>
 										</tr>
 										<tr>
 											<td>Password :</td>
 											<td class="editPasswordText">*****</td>
 											<td class="editPasswordInput" style="display:none;">
-												<input type="password" class="form-control editPassword" placeholder="Password" required/>
+												<input type="password" class="form-control editPassword" placeholder="Confirm your password" required/>
 											</td>
 										</tr>
-										<tr class="editPasswordConfirmInput" style="display:none;">
-											<td>Confirm Password :</td>
+										<tr class="changePasswordInput" style="display:none;">
+											<td>New password :</td>
 											<td>
-												<input type="password" class="form-control editRepassword" placeholder="Repeat password" required/>
+												<input type="password" class="form-control changePassword" placeholder="new password" required/>
 											</td>
+										</tr>
+										<tr class="changeRePasswordInput" style="display:none;">
+											<td>Confirm new password :</td>
+											<td>
+												<input type="password" class="form-control changeRePassword" placeholder="Confirm your new password" required/>
+											</td>
+										</tr>
+										<tr class="submitChange" style="display:none;">
+											<td>Validate :</td>
+											<td><button class="btn btn-sm btn-theme send-edit-profile pull-right"><span class="fa fa-refresh"></span> Update my password</button></td>
 										</tr>
 										<tr class="submitEdit" style="display:none;">
 											<td>Validate :</td>
@@ -204,23 +214,24 @@ if($auth->isLogged()){
 										</tr>
 										<tr>
 											<td>My VIP points :</td>
-											<td><?=$acc->credit?></td>
+											<td><?=$acc->credit?> <img src="assets/images/pts.png" width="15px"/></td>
 										</tr>
 									</tbody>
 								</table>
 								<a href="unlock-character.php" type="button" class="btn btn-theme">Unlock my character</a>
 								<a href="characters.php" type="button" class="btn btn-theme">Manage my characters</a>
 								<div class="pull-right">
-								<a href="store.php" type="button" class="btn btn-theme">Store</a>
-								<a href="#" type="button" class="btn btn-theme">My orders</a>
-							</div>
+									<a href="store.php" type="button" class="btn btn-theme">Store</a>
+									<a href="#" type="button" class="btn btn-theme">My orders</a>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="panel-footer">
 						<a href="#" type="button" class="btn btn-sm btn-theme send-disconnect">Disconnect</a>
 						<span class="pull-right">
-							<a href="#" type="button" class="btn btn-sm btn-theme edit-profile" title="Edit my profile"><i class="glyphicon glyphicon-edit"></i></a>
+							<a href="#" type="button" class="btn btn-sm btn-theme edit-profile" title="Edit my profile">Edit my profile</a>
+							<a href="#" type="button" class="btn btn-sm btn-theme edit-password" title="Change my password">Change my password</a>
 						</span>
 					</div>
 				</div>

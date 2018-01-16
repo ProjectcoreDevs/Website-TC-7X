@@ -86,8 +86,13 @@ $(document).ready(function() {
 		$('.editEmailInput').show();
 		$('.editPasswordText').hide();
 		$('.editPasswordInput').show();
-		$('.editPasswordConfirmInput').show();
 		$('.submitEdit').show();
+	});
+	$('.edit-password').on('click',function(){
+		$('.changePasswordText').hide();
+		$('.changePasswordInput').show();
+		$('.changeRePasswordInput').show();
+		$('.submitChange').show();
 	});
 });
 
